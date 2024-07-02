@@ -21,11 +21,9 @@ public class FiringCost {
 
     public boolean extractCosts(Inventory inv){
         boolean hasItems = hasItems(inv);
-        System.out.println(1);
         if (hasItems){
             for (Pair pair : costs){
                 inv.incItem(pair.item,-1*pair.cost);
-                System.out.println(4);
             }
         }
         return hasItems;

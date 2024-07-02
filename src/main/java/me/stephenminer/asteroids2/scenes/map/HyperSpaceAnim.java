@@ -14,6 +14,7 @@ import me.stephenminer.asteroids2.scenes.sector.store.StoreScreen;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class HyperSpaceAnim {
@@ -150,7 +151,8 @@ public class HyperSpaceAnim {
 
     private Sector selectSector() throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         List<Class<? extends Sector>> types = sectorTypes();
-        Class<? extends Sector> type = types.get(ThreadLocalRandom.current().nextInt(types.size()));
+        Random random = new Random();
+        Class<? extends Sector> type = types.get(random.nextInt(types.size()));
         return type.getConstructor(GameScreen.class, Ship.class).newInstance(screen, screen.getPlayer());
     }
 

@@ -17,6 +17,7 @@ public class Asteroid extends Entity {
         initVals();
         this.piece = piece;
         initPieces();
+        weight = 30;
     }
 
 

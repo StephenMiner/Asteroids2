@@ -1,5 +1,6 @@
 package me.stephenminer.asteroids2.event.ship;
 
+import javafx.animation.AnimationTimer;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -22,10 +23,37 @@ public class MoveShip implements EventHandler<KeyEvent> {
                 ship.accelerateBackwards();
                 break;
             case E:
-                ship.rotate(1);
+
+                new AnimationTimer(){
+                    double target = 0.2;
+                    double current = 0;
+                    @Override
+                    public void handle(long l) {
+                        if (current>= target) {
+                            stop();
+                            return;
+                        }
+                        ship.rotate(0.07);
+                        current+=0.07;
+                    }
+                }.start();
+                //ship.rotate(0.2);
                 break;
             case Q:
-                ship.rotate(-1);
+                new AnimationTimer(){
+                    double target = -0.2;
+                    double current = 0;
+                    @Override
+                    public void handle(long l) {
+                        if (current< target) {
+                            stop();
+                            return;
+                        }
+                        ship.rotate(-0.07);
+                        current-=0.07;
+                    }
+                }.start();
+               // ship.rotate(-0.2);
                 break;
             case W:
                 ship.setAx(0);

@@ -36,7 +36,7 @@ public class ShrapnelLauncher extends Weapon implements Equipment{
                 if (count >= timeBetween){
                     count = 0;
                     current++;
-                    for (double theta = 0; theta <= Math.PI; theta+= Math.PI/projectiles){
+                    for (double theta = 0; theta <= 2*Math.PI; theta+= Math.PI/projectiles){
                         final double launch = Math.toDegrees(theta);
                         Platform.runLater(()->projectile(screen,launch));
                     }

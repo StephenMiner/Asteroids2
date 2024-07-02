@@ -33,6 +33,7 @@ public class PirateFighter extends Entity implements Shieldable {
         ax = Math.cos(Math.toRadians(angleToTarget()))*speed;
         ay = Math.sin(Math.toRadians(angleToTarget()))*speed;
         bounce = true;
+        weight = 80;
     }
     public PirateFighter(GameScreen screen, double x, double y, float speed, boolean dummy){
         super(screen,x,y,speed,dummy);

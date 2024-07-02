@@ -106,6 +106,28 @@ public class HyperSpaceCooldown {
         parts.clear();
     }
 
+    /**
+     * @return Current cooldown progress for hyperspace cooldown
+     */
+    public int getCurrent(){
+        return current;
+    }
+
+    /**
+     * Sets the cooldown progression for the HyperSpaceCooldown
+     * @param current
+     */
+    public void setCurrent(int current){
+        this.current = current;
+    }
+
+    /**
+     * @return Full length of the HyperSpaceCooldown
+     */
+    public int getMaxLength(){
+        return maxLength;
+    }
+
 
 
 

@@ -10,6 +10,7 @@ public class SmallAstroid extends Asteroid{
 
     public SmallAstroid(GameScreen screen, double x, double y, float speed, int piece) {
         super(screen, x, y, speed, piece);
+        weight = 0;
     }
 
     @Override

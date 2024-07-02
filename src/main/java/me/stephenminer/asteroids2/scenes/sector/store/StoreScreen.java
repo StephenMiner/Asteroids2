@@ -8,6 +8,7 @@ import me.stephenminer.asteroids2.Asteroids;
 import me.stephenminer.asteroids2.entity.ship.Ship;
 import me.stephenminer.asteroids2.equipment.Weapons;
 import me.stephenminer.asteroids2.scenes.GameScreen;
+import me.stephenminer.asteroids2.scenes.map.HyperSpaceCooldown;
 import me.stephenminer.asteroids2.scenes.sector.Sector;
 
 import java.util.ArrayList;
@@ -32,6 +33,7 @@ public class StoreScreen extends Sector {
         settings.setMaxs(0,0,0,0);
         settings.setRates(0,0,0,0);
         writeValues();
+
     }
 
     private void loadProduct(){
@@ -78,6 +80,8 @@ public class StoreScreen extends Sector {
         super.start();
         initParts();
         loadProduct();
+        HyperSpaceCooldown cooldown = ship.getHyperSpaceCD();
+        cooldown.setCurrent(cooldown.getMaxLength()-1);
     }
 
     @Override

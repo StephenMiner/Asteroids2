@@ -30,6 +30,7 @@ public class SaucerAlien extends Entity implements Shieldable {
         this.screen = screen;
         initGear();
         useWeaponry();
+        weight = 80;
     }
 
     protected void initGear(){

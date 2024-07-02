@@ -1,12 +1,14 @@
 package me.stephenminer.asteroids2.entity.projectile;
 
 import me.stephenminer.asteroids2.entity.Entity;
+import me.stephenminer.asteroids2.entity.Shieldable;
 import me.stephenminer.asteroids2.scenes.GameScreen;
 
 public class Bullet extends Projectile{
 
     public Bullet(GameScreen screen, Entity shooter, double x, double y, float speed, double angle, double damage) {
         super(screen, shooter, x, y, speed, angle, damage);
+        weight = 1;
     }
 
     @Override
@@ -22,6 +24,23 @@ public class Bullet extends Projectile{
         double xSpeed = xSpeed(colliding);
         double ySpeed = ySpeed(colliding);
         double angle = calculateAngle(xSpeed,ySpeed);
+        special_cases:
+        {
+            if (colliding instanceof Shieldable) {
+                if (((Shieldable) colliding).canDmg()) {
+                    break special_cases;
+                }else {
+                    this.setDead(true);
+                    return;
+                }
+            }
+            if (colliding.getWeight() == 0 && (!(colliding instanceof Laser))) {
+                colliding.setDead(true, shooter);
+                this.setDead(true);
+                return;
+            }
+        }
+        this.setDead(true);
         colliding.setAx(xSpeed);
         colliding.setAy(ySpeed);
         colliding.setangle(angle);

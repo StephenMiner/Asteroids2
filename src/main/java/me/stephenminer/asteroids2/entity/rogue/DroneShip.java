@@ -30,6 +30,7 @@ public class DroneShip extends Entity implements Shieldable {
         initGear();
         useWeaponry();
         generateMovement();
+        weight = 80;
     }
 
     public DroneShip(GameScreen screen, double x, double y, float speed, boolean dummy){

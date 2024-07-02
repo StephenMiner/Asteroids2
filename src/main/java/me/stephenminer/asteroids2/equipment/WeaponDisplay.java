@@ -123,7 +123,7 @@ public class WeaponDisplay {
 
     private boolean disabled(){
         if (weapon.getHolder() instanceof Ship ship){
-            return !weapon.getFiringCost().hasItems(ship.supplies());
+            return weapon.hasFiringCost() && !weapon.getFiringCost().hasItems(ship.supplies());
         }
         return false;
     }

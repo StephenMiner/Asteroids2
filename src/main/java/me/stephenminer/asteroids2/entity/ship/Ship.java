@@ -31,10 +31,10 @@ public class Ship extends Entity implements Shieldable {
         weapons = new ArrayList<>();
         activeSlot = -1;
         supplies = new Inventory(this,2,5,2);
-        Weapon weapon = Weapon.construct(Weapons.FALCON_MISSILE,this);
-
+        Weapon weapon = Weapon.construct(Weapons.BASIC_LASER,this);
         addWeapon(weapon);
-        addWeapon(Weapon.construct(Weapons.ANTI_MISSILE,this));
+        addWeapon(Weapon.construct(Weapons.BARRAGE_LASER,this));
+        addWeapon(Weapon.construct(Weapons.ADVANCED_LASER,this));
         shield = new Shield(this, 3,10*1000);
         addShield(screen);
         cooldown = new HyperSpaceCooldown(screen, this, 15*1000);
@@ -189,6 +189,10 @@ public class Ship extends Entity implements Shieldable {
         return weapons.indexOf(weapon) + 1;
     }
     public int getActiveSlot(){ return activeSlot; }
+
+    public HyperSpaceCooldown getHyperSpaceCD(){
+        return cooldown;
+    }
 
 
 

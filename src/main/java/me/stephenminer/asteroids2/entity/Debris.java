@@ -33,7 +33,7 @@ public abstract class Debris extends Entity{
         this.piece = piece;
         initVals();
         loadCorners();
-        weight = ThreadLocalRandom.current().nextInt(1,5);
+        weight = ThreadLocalRandom.current().nextInt(0,5) * 20;
     }
 
     protected void initVals(){

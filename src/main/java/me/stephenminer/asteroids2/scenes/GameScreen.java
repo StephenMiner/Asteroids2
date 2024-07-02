@@ -53,8 +53,8 @@ public class GameScreen {
         this.player = player;
         try {
             //sector = new FinalBattle(this, player);
-          //  sector.start();
-            sector = selectSector();
+            sector.start();
+           // sector = new FinalBattle(this, player);//selectSector();
             sector.start();
         }catch (Exception ignored){ ignored.printStackTrace();}
         move = new MoveShip(player);
@@ -62,6 +62,7 @@ public class GameScreen {
         scene.addEventHandler(KeyEvent.KEY_PRESSED,move);
         scene.addEventHandler(KeyEvent.KEY_PRESSED,shoot);
         timer = new InvasionTimer(this, 225*1000);
+        //timer = new InvasionTimer(this, 5000);
         timer.start();
       //  new DroneShip(this, 400,400,3f, player);
     }

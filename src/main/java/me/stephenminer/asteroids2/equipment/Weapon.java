@@ -67,10 +67,13 @@ public abstract class Weapon implements Equipment{
 
     public boolean shoot(GameScreen screen){
         if (!canShoot()) return false;
-        boolean shoot = firingCost == null || holder instanceof Ship ship && firingCost.hasItems(ship.supplies());
+        boolean shoot = firingCost == null || !(holder instanceof Ship ship) || (firingCost != null && firingCost.hasItems(ship.supplies()));
+        System.out.println(5);
         if (shoot) {
-            if (firingCost != null) firingCost.extractCosts(((Ship) holder).supplies());
+            System.out.println(2);
+            if (firingCost != null && holder instanceof Ship) firingCost.extractCosts(((Ship) holder).supplies());
             fireProjectile(screen);
+            System.out.println(3);
             current = 0;
             runCooldown();
             return true;
@@ -133,6 +136,8 @@ public abstract class Weapon implements Equipment{
 
     public FiringCost getFiringCost(){ return firingCost; }
     public void setFiringCost(FiringCost firingCost){ this.firingCost = firingCost; }
+
+    public boolean hasFiringCost(){ return firingCost != null; }
 
 
 }

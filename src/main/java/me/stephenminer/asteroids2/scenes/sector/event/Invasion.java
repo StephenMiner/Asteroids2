@@ -85,7 +85,7 @@ public class Invasion {
         Weapons weapons = select();
         SaucerAlien alien;
         Pair<Double,Double> pos = generatePos();
-        if (weapons.firingCost().getCost(Inventory.Items.MISSILES) != null){
+        if (weapons.firingCost() != null && weapons.firingCost().getCost(Inventory.Items.MISSILES) != null){
             alien = new AlienBomber(screen,pos.getKey(),pos.getValue(),1,screen.getPlayer());
         }else alien = new SaucerAlien(screen, pos.getKey(), pos.getValue(),2,screen.getPlayer());
         Weapon weapon = Weapon.construct(weapons,alien);

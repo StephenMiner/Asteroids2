@@ -18,6 +18,7 @@ public class InvasionTimer {
     private List<Node> components;
     private GameScreen screen;
     private Rectangle box,bar;
+    private Invasion invasion;
     private Text label;
     private int height;
     private int width;
@@ -80,12 +81,18 @@ public class InvasionTimer {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
+                if (invasion != null && !invasion.ending()) return;
                 if (end){
                     cancel();
                     return;
                 }
                 if (screen.getPlayer().isWarping() || (screen.getSector() != null && screen.getSector().paused()))return;
                 float ratio = current / (float) cooldown;
+                if (ratio >= 1){
+                    invasion = new Invasion(screen, 8);
+                    Platform.runLater(()->invasion.start());
+
+                }
                 update(ratio);
                 current++;
             }
